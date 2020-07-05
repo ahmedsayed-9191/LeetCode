@@ -22,5 +22,24 @@ namespace LeetCode
             }
             return nums;
         }
+        public int[] Shuffle(int[] nums, int n)
+        {
+            int[] shuffledArray = new int[nums.Length];
+            int oddCounter = 0, evenCounter = 0;
+            for (int counter = 0; counter < nums.Length; counter++)
+            {
+                if (counter % 2 == 0)
+                {
+                    shuffledArray[counter] = nums[evenCounter];
+                    evenCounter++;
+                }
+                else
+                {
+                    shuffledArray[counter] = nums[oddCounter + n];
+                    oddCounter++;
+                }
+            }
+            return shuffledArray;
+        }
     }
 }
