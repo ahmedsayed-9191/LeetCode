@@ -12,8 +12,15 @@ namespace LeetCode
         {
         }
     }
-    public class Easy
+    public class ProblemSet
     {
-        
+        public int[] RunningArraySum(int[] nums)
+        {
+            for (int counter = 1; counter < nums.Length; counter++)
+            {
+                nums[counter] = nums[counter] + nums[counter - 1];
+            }
+            return nums;
+        }
     }
 }
