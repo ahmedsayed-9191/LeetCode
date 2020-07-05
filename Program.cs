@@ -41,5 +41,24 @@ namespace LeetCode
             }
             return shuffledArray;
         }
+        public IList<bool> KidsWithCandies(int[] candies, int extraCandies)
+        {
+            IList<bool> extraCandiesTakeAbility = new List<bool>();
+            for (int counter1 = 0; counter1 < candies.Length; counter1++)
+            {
+                int candyNewValue = candies[counter1] + extraCandies;
+                int greatest = candies[0];
+                for (int counter2 = 0; counter2 < candies.Length; counter2++)
+                {
+                    if (candies[counter2] >= greatest)
+                        greatest = candies[counter2];
+                }
+                if(candyNewValue >= greatest)
+                    extraCandiesTakeAbility.Add(true);
+                else
+                    extraCandiesTakeAbility.Add(false);
+            }
+            return extraCandiesTakeAbility;
+        }
     }
 }
