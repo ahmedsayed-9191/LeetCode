@@ -13,7 +13,7 @@ namespace LeetCode
         }
     }
     public class ProblemSet
-    {
+    { 
         public int[] RunningArraySum(int[] nums)
         {
             for (int counter = 1; counter < nums.Length; counter++)
@@ -73,6 +73,17 @@ namespace LeetCode
                 defangedIP = defangedIP + array[count] + "[.]";
             }          
             return defangedIP + array[array.Length-1];
+        }
+        public int XorOperation(int n, int start)
+        {
+            int[] nums = new int[n];
+            int result = 0;
+            for (int counter = 0; counter < n; counter++)
+            {
+                nums[counter] = start + 2 * counter;
+                result ^= nums[counter];
+            }        
+            return result;
         }
     }
 }
