@@ -60,5 +60,19 @@ namespace LeetCode
             }
             return extraCandiesTakeAbility;
         }
+        public string DefangIPaddr(string address)
+        {
+            return address.Replace(".",@"[.]");
+        }
+        public string DefangIPaddrV2(string address)
+        {
+            string[] array= address.Split('.');
+            string defangedIP="";
+            for(int count = 0; count < (array.Length)-1; count++)
+            {
+                defangedIP = defangedIP + array[count] + "[.]";
+            }          
+            return defangedIP + array[array.Length-1];
+        }
     }
 }
