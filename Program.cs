@@ -10,7 +10,6 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
-            
         }
     }
     public class ProblemSet
@@ -113,6 +112,25 @@ namespace LeetCode
         {
             char[] stonesTypes = J.ToCharArray();
             return S.Count(stonesTypes.Contains);
+        }
+        public int[] SmallerNumbersThanCurrent(int[] nums)
+        {
+            int[] newnums = new int[nums.Length];
+            for (int counter1 = 0; counter1 < nums.Length; counter1++)
+                for (int counter2 = 0; counter2 < nums.Length; counter2++)
+                    if (counter2 != counter1 && nums[counter2] < nums[counter1])
+                        newnums[counter1]++;
+            return newnums;
+        }
+        public int[] SmallerNumbersThanCurrentV2(int[] nums)
+        {
+            int[] newnums = new int[nums.Length];
+            int[] sortednums = new int[nums.Length];
+            sortednums = new List<int>(nums).ToArray();
+            Array.Sort(sortednums);
+            for (int counter = 0; counter < sortednums.Length; counter++)
+                newnums[counter] = Array.IndexOf(sortednums, nums[counter]);
+            return newnums;
         }
     }
 }
