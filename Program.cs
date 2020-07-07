@@ -10,6 +10,7 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
+            
         }
     }
     public class ProblemSet
@@ -97,6 +98,21 @@ namespace LeetCode
                 stepsNum++;
             }
             return stepsNum;
+        }
+        public int NumJewelsInStones(string J, string S)
+        {
+            char[] myStones = S.ToCharArray();
+            int jewelsNum = 0;
+            foreach (char stone in myStones)
+                if (J.Contains(stone))
+                    jewelsNum++;
+            return jewelsNum;
+
+        }
+        public int NumJewelsInStonesV2(string J, string S)
+        {
+            char[] stonesTypes = J.ToCharArray();
+            return S.Count(stonesTypes.Contains);
         }
     }
 }
