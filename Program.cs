@@ -10,10 +10,6 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
-            int[] nums = new[] { 1, 2, 3, 4 };
-            int[] result = new int[nums.Length];
-            int[] expected = new[] { 2, 4, 4, 4 };
-            result = new ProblemSet().DecompressRLElist(nums);
         }
     }
     public class ProblemSet
@@ -155,6 +151,15 @@ namespace LeetCode
                 sum += digit;
             }
             return product - sum;
+        }
+        public int[] CreateTargetArray(int[] nums, int[] index)
+        {
+            var target = new List<int>();
+            for (int counter = 0; counter < nums.Length; counter++)
+            {
+                target.Insert(index[counter], nums[counter]);
+            }
+            return target.ToArray();
         }
     }
 }
