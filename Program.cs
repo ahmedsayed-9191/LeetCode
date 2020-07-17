@@ -10,6 +10,9 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
+            string s = "RLRRLLRLRL";
+            int expected = 4;
+            int result = new ProblemSet().BalancedStringSplit(s);
         }
     }
     public class ProblemSet
@@ -160,6 +163,23 @@ namespace LeetCode
                 target.Insert(index[counter], nums[counter]);
             }
             return target.ToArray();
+        }
+        public int BalancedStringSplit(string s)
+        {
+            int count = 0, sum=0;
+            for(int counter = 0; counter < s.Length; counter++)
+            {
+                if (s[counter] == 'L')
+                    sum++;
+                else
+                    sum--;
+                if (sum == 0)
+                {
+                    count++;
+                    sum = 0;
+                }
+            }
+            return count;
         }
     }
 }
