@@ -10,9 +10,9 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
-            string s = "RLRRLLRLRL";
-            int expected = 4;
-            int result = new ProblemSet().BalancedStringSplit(s);
+            int[] nums = new[] { 252 };
+            int expected = 0;
+            int result = new ProblemSet().FindNumbers(nums);
         }
     }
     public class ProblemSet
@@ -180,6 +180,22 @@ namespace LeetCode
                 }
             }
             return count;
+        }
+        public int FindNumbers(int[] nums)
+        {
+            int evenNums =0;
+            for (int counter = 0; counter < nums.Length; counter++)
+            {
+                int digitCount=0;                
+                while (nums[counter] > 0)
+                {
+                    nums[counter] /= 10;
+                    digitCount++;
+                }
+                if (digitCount % 2 == 0)
+                    evenNums++;               
+            }
+            return evenNums;
         }
     }
 }
