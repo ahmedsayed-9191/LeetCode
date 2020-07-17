@@ -10,6 +10,10 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
+            int[] nums = new[] { 1, 2, 3, 4 };
+            int[] result = new int[nums.Length];
+            int[] expected = new[] { 2, 4, 4, 4 };
+            result = new ProblemSet().DecompressRLElist(nums);
         }
     }
     public class ProblemSet
@@ -131,6 +135,14 @@ namespace LeetCode
             for (int counter = 0; counter < sortednums.Length; counter++)
                 newnums[counter] = Array.IndexOf(sortednums, nums[counter]);
             return newnums;
+        }
+        public int[] DecompressRLElist(int[] nums)
+        {
+            var list = new List<int>();
+            for (int counter = 0; counter < nums.Length; counter += 2)
+                for (int counter2 = 0; counter2 < nums[counter]; counter2++)
+                    list.Add(nums[counter + 1]);
+            return list.ToArray();
         }
     }
 }
