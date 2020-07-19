@@ -1,8 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Text;
-using System.Threading.Tasks;
 
 namespace LeetCode
 {
@@ -10,13 +8,12 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
-            int[] nums = new[] { 252 };
-            int expected = 0;
-            int result = new ProblemSet().FindNumbers(nums);
+            int N = 0;
+            int result = new ProblemSet().solution(N);
         }
     }
     public class ProblemSet
-    { 
+    {
         public int[] RunningArraySum(int[] nums)
         {
             for (int counter = 1; counter < nums.Length; counter++)
@@ -56,7 +53,7 @@ namespace LeetCode
                     if (candies[counter2] >= greatest)
                         greatest = candies[counter2];
                 }
-                if(candyNewValue >= greatest)
+                if (candyNewValue >= greatest)
                     extraCandiesTakeAbility.Add(true);
                 else
                     extraCandiesTakeAbility.Add(false);
@@ -65,17 +62,17 @@ namespace LeetCode
         }
         public string DefangIPaddr(string address)
         {
-            return address.Replace(".",@"[.]");
+            return address.Replace(".", @"[.]");
         }
         public string DefangIPaddrV2(string address)
         {
-            string[] array= address.Split('.');
-            string defangedIP="";
-            for(int count = 0; count < (array.Length)-1; count++)
+            string[] array = address.Split('.');
+            string defangedIP = "";
+            for (int count = 0; count < (array.Length) - 1; count++)
             {
                 defangedIP = defangedIP + array[count] + "[.]";
-            }          
-            return defangedIP + array[array.Length-1];
+            }
+            return defangedIP + array[array.Length - 1];
         }
         public int XorOperation(int n, int start)
         {
@@ -85,7 +82,7 @@ namespace LeetCode
             {
                 nums[counter] = start + 2 * counter;
                 result ^= nums[counter];
-            }        
+            }
             return result;
         }
         public int NumberOfSteps(int num)
@@ -145,7 +142,7 @@ namespace LeetCode
         }
         public int SubtractProductAndSum(int n)
         {
-            int product=1,sum=0;
+            int product = 1, sum = 0;
             while (n > 0)
             {
                 var digit = n % 10;
@@ -166,8 +163,8 @@ namespace LeetCode
         }
         public int BalancedStringSplit(string s)
         {
-            int count = 0, sum=0;
-            for(int counter = 0; counter < s.Length; counter++)
+            int count = 0, sum = 0;
+            for (int counter = 0; counter < s.Length; counter++)
             {
                 if (s[counter] == 'L')
                     sum++;
@@ -183,19 +180,60 @@ namespace LeetCode
         }
         public int FindNumbers(int[] nums)
         {
-            int evenNums =0;
+            int evenNums = 0;
             for (int counter = 0; counter < nums.Length; counter++)
             {
-                int digitCount=0;                
+                int digitCount = 0;
                 while (nums[counter] > 0)
                 {
                     nums[counter] /= 10;
                     digitCount++;
                 }
                 if (digitCount % 2 == 0)
-                    evenNums++;               
+                    evenNums++;
             }
             return evenNums;
+        }
+        public int SmallestPositive(int[] A)
+        {
+            int smallestpos = 1;
+            Array.Sort(A);
+            for (int counter = 0; counter < A.Length; counter++)
+                if (A[counter] > 0 && A[counter] >= smallestpos && A.Contains(smallestpos))
+                    smallestpos = A[counter] + 1;
+            return smallestpos;
+        }
+        public int maxValuebyadding5(int N)
+        {
+            var digites = new Stack<int>();
+            int? result = null;
+            bool inserted = false;
+            if (N < 0)
+                return int.Parse(-5 + String.Format("{0:0}", Math.Abs(N)));
+            if (N == 0)
+                digites.Push(N);
+            while (N > 0)
+            {
+                var digit = N % 10;
+                N /= 10;
+                digites.Push(digit);
+            }
+            var list = digites.ToList();
+            int IndexOfMinDigit = list.IndexOf(digites.Min());
+            while (digites.Count > 0)
+            {
+                if (digites.FirstOrDefault() == list[IndexOfMinDigit] && !inserted)
+                {
+                    result = int.Parse(result.ToString() + 5);
+                    inserted = true;
+                }
+                else
+                {
+                    int poped_digit = digites.Pop();
+                    result = int.Parse(result.ToString() + poped_digit);
+                }
+            }
+            return (int)result;
         }
     }
 }
