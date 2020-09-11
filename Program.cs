@@ -8,8 +8,8 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
-            int N = 0;
-            int result = new ProblemSet().solution(N);
+            int[] N = new int[] { -6,-91,1011,-100,84,-22,0,1,473 };
+            int result = new ProblemSet().max(N);
         }
     }
     public class ProblemSet
@@ -235,5 +235,18 @@ namespace LeetCode
             }
             return (int)result;
         }
-    }
+        public int max(int[] N)
+        {
+            int maximum = 0;
+            // write your code in C# 6.0 with .NET 4.5 (Mono)
+            for (int counter = 0; counter < N.Length; counter++)
+            {
+                if (N[counter] % 10 == 1)
+                {
+                    Console.WriteLine("number = {0}", N[counter]);
+                }
+            }
+            return maximum;
+        }
+}
 }
