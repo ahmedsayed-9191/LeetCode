@@ -9,7 +9,7 @@ namespace LeetCode
         static void Main(string[] args)
         {
             //int[] N = new int[] { -6,-91,1011,-100,84,-22,0,1,473 };
-            //int result = new ProblemSet().MaximumAmongAllOneDigitIntegers(N);
+            //int result = new ProblemSet().DeletingIdenticallettersCost("ababa", new[] { 10, 5, 10, 5, 10 });
         }
     }
     public class ProblemSet
@@ -247,5 +247,18 @@ namespace LeetCode
             }
             return maximum;
         }
-}
+        public int MinimumTotalCostOfDeletingIdenticalletters(string S, int[] C)
+        {
+            int minimumTotalCost = 0;
+            for (int counter = 0; counter < S.Length -1 ; counter++)
+            {
+                if (S[counter] == S[counter + 1])
+                    if (C[counter] < C[counter + 1])
+                        minimumTotalCost += C[counter];
+                    else
+                        minimumTotalCost += C[counter+1];
+            }
+            return minimumTotalCost;
+        }
+    }
 }
