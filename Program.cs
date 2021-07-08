@@ -8,8 +8,8 @@ namespace LeetCode
     {
         static void Main(string[] args)
         {
-            //int[] N = new int[] { -6,-91,1011,-100,84,-22,0,1,473 };
-            //int result = new ProblemSet().DeletingIdenticallettersCost("ababa", new[] { 10, 5, 10, 5, 10 });
+            int[] N = new[] { 3,2,3 };
+            new ProblemSet().TwoSum(N,6);
         }
     }
     public class ProblemSet
@@ -259,6 +259,23 @@ namespace LeetCode
                         minimumTotalCost += C[counter+1];
             }
             return minimumTotalCost;
+        }
+        public int NumIdenticalPairs(int[] nums)
+        {
+            int identicalPairs = 0;
+            return identicalPairs;
+        }
+        public int[] TwoSum(int[] nums, int target)
+        {
+            for (int counter1 = 0; counter1 < nums.Length-1; counter1++)
+            {
+                for (int counter2 = counter1+1; counter2 < nums.Length; counter2++)
+                {
+                    if (nums[counter1] + nums[counter2] == target)
+                        return new int[] { counter1, counter2 };
+                }                                  
+            }
+            throw new Exception("No two sum solution");
         }
     }
 }
